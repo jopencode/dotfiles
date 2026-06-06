@@ -1,0 +1,124 @@
+@import url("/home/user/.cache/wal/colors-waybar.css");
+
+@define-color background-alt rgba(30, 30, 46, 0.5);
+@define-color selected-bg @color6;
+@define-color critical-red #ff5555;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", "Helvetica", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0); 
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces,
+#mode,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#network,
+#pulseaudio,
+#wireplumber,
+#backlight,
+#disk,
+#power-profiles-daemon,
+#idle_inhibitor,
+#tray,
+#custom-hardware-wrap,
+#custom-session-wrap {
+    background-color: @background;
+    background: rgba(15, 15, 15, 0.75);
+    padding: 0px 15px;
+    margin: 4px 4px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: @foreground;
+    background-color: transparent;
+    border-radius: 8px;
+    margin: 3px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.focused {
+    background-color: @color6;
+    color: @background;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: @color1;
+    color: white;
+}
+
+#clock {
+    color: @color6;
+    font-weight: bold;
+}
+
+#cpu { color: @color2; }
+#memory { color: @color5; }
+#temperature { color: @color3; }
+#temperature.critical { color: @critical-red; }
+
+#battery { color: @color6; }
+#battery.charging, #battery.plugged { color: @color2; }
+#battery.critical:not(.charging) {
+    color: @critical-red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network { color: @color4; }
+#network.disconnected { color: @color1; }
+
+#pulseaudio { color: @color6; }
+#pulseaudio.muted { color: @color8; }
+
+#backlight { color: @color6; }
+
+#tray {
+    padding: 0 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: @critical-red;
+        color: white;
+    }
+}
+
+#waybar > box > box:first-child > widget:first-child #workspaces {
+    margin-left: 10px;
+}
+
+#waybar > box > box:last-child > widget:last-child #clock,
+#waybar > box > box:last-child > widget:last-child #tray {
+    margin-right: 10px;
+}

@@ -1,0 +1,4 @@
+happ-desktop-bin
+swaylock-effects-git
+yay
+yay-debug

@@ -1,0 +1,12 @@
+layout {{
+    focus-ring {{
+        active-color "{color12}"
+        inactive-color "{color8}"
+        active-gradient from="{color12}" to="{color14}" angle=135
+    }}
+
+    border {{
+        active-color "{color12}"
+        inactive-color "{color0}"
+    }}
+}}
